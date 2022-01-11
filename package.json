@@ -8,7 +8,7 @@
     "test": "npm run lint && TEST=unit nyc mocha test/unit/",
     "test:integration": "mocha --timeout 25000 test/integration/",
     "lint": "standard --env mocha --fix",
-    "docs": "./node_modules/.bin/apidoc -i src/ -o docs",
+    "docs": "./node_modules/.bin/apidoc -i lib/ -o docs",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "coverage:report": "nyc --reporter=html mocha test/unit/ --exit"
   },
@@ -27,13 +27,13 @@
   "license": "MIT",
   "apidoc": {
     "title": "bch-consumer",
-    "url": "localhost:5000"
+    "url": "bchConsumer."
   },
   "repository": "Permissionless-Software-Foundation/bch-consumer",
   "dependencies": {
     "@psf/bch-js": "4.21.0",
     "apidoc": "0.25.0",
-    "axios": "^0.24.0"
+    "axios": "0.24.0"
   },
   "devDependencies": {
     "chai": "4.2.0",
