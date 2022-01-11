@@ -4,6 +4,7 @@
 
 // Local libraries
 const BCH = require('./lib/bch')
+const Message = require('./lib/msg')
 
 class BchConsumer {
   constructor (localConfig = {}) {
@@ -15,6 +16,7 @@ class BchConsumer {
 
     // Encapsulate dependencies
     this.bch = new BCH(localConfig)
+    this.msg = new Message(localConfig)
   }
 }
 
