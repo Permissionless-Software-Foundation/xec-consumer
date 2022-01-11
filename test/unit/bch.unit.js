@@ -87,4 +87,30 @@ describe('#BCH', () => {
       }
     })
   })
+
+  describe('#sendTx', () => {
+    it('should broadcast a transaction', async () => {
+      // Mock network
+      sandbox.stub(uut.axios, 'post').resolves({ data: { key: 'value' } })
+
+      const hex = 'fakehex'
+
+      const result = await uut.sendTx(hex)
+
+      assert.equal(result.key, 'value')
+    })
+
+    it('should throw an error if input is not a string', async () => {
+      try {
+        await uut.sendTx(123)
+
+        assert.fail('Unexpected code path')
+      } catch (err) {
+        assert.equal(
+          err.message,
+          'Input must be a string containing hex representation of a transaction'
+        )
+      }
+    })
+  })
 })
