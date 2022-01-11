@@ -61,4 +61,30 @@ describe('#BCH', () => {
       }
     })
   })
+
+  describe('#getUtxos', () => {
+    it('should request utxos', async () => {
+      // Mock network
+      sandbox.stub(uut.axios, 'post').resolves({ data: { key: 'value' } })
+
+      const addr = 'testaddr'
+
+      const result = await uut.getUtxos(addr)
+
+      assert.equal(result.key, 'value')
+    })
+
+    it('should throw an error if input is not a string', async () => {
+      try {
+        await uut.getUtxos(123)
+
+        assert.fail('Unexpected code path')
+      } catch (err) {
+        assert.equal(
+          err.message,
+          'Input must be a string containing bitcoincash address'
+        )
+      }
+    })
+  })
 })
