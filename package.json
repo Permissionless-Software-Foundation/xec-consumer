@@ -1,7 +1,7 @@
 {
-  "name": "@chris.troutner/npm-lib-boilerplate",
+  "name": "bch-consumer",
   "version": "1.0.0",
-  "description": "A boilerplate for creating an npm library with Semantic Release, linting, and tests.",
+  "description": "A npm JS library for interacting with ipfs-bch-wallet-consumer REST API",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -28,12 +28,12 @@
   "author": "Chris Troutner <chris.troutner@gmail.com>",
   "license": "MIT",
   "apidoc": {
-    "title": "npm-lib-boilerplate",
+    "title": "bch-consumer",
     "url": "localhost:5000"
   },
-  "repository": "christroutner/npm-lib-boilerplate",
+  "repository": "Permissionless-Software-Foundation/bch-consumer",
   "dependencies": {
-    "@psf/bch-js": "4.20.21",
+    "@psf/bch-js": "4.21.0",
     "apidoc": "0.25.0"
   },
   "devDependencies": {
@@ -45,13 +45,13 @@
     "eslint-plugin-node": "11.1.0",
     "eslint-plugin-prettier": "3.3.1",
     "eslint-plugin-standard": "4.0.0",
-    "husky": "^4.3.8",
+    "husky": "4.3.8",
     "lodash.clonedeep": "4.5.0",
-    "mocha": "^8.4.0",
+    "mocha": "8.4.0",
     "nyc": "15.1.0",
     "semantic-release": "17.4.2",
     "sinon": "9.2.2",
-    "standard": "^16.0.4"
+    "standard": "16.0.4"
   },
   "release": {
     "publish": [
