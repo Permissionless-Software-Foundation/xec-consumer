@@ -32,7 +32,8 @@
   "repository": "Permissionless-Software-Foundation/bch-consumer",
   "dependencies": {
     "@psf/bch-js": "4.21.0",
-    "apidoc": "0.25.0"
+    "apidoc": "0.25.0",
+    "axios": "^0.24.0"
   },
   "devDependencies": {
     "chai": "4.2.0",
