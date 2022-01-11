@@ -1,26 +1,23 @@
 /*
-  An npm JavaScript library for front end web apps. Implements a minimal
-  Bitcoin Cash wallet.
+  A JS library for interacting with the ipfs-bch-wallet-consumer REST API
 */
 
-/* eslint-disable no-async-promise-executor */
+// Local libraries
+const BCH = require('./lib/bch')
+const Message = require('./lib/msg')
 
-'use strict'
+class BchConsumer {
+  constructor (localConfig = {}) {
+    // Allow URL to be overridden at startup.
+    this.restUrl = localConfig.restUrl
+    if (!this.restUrl) {
+      this.restUrl = 'https://free-bch.fullstack.cash'
+    }
 
-const BCHJS = require('@psf/bch-js')
-
-const Util = require('./lib/util')
-const util = new Util()
-
-let _this // local global for 'this'.
-
-class BoilplateLib {
-  constructor () {
-    _this = this
-
-    _this.bchjs = new BCHJS()
-    _this.util = util
+    // Encapsulate dependencies
+    this.bch = new BCH(localConfig)
+    this.msg = new Message(localConfig)
   }
 }
 
-module.exports = BoilplateLib
+module.exports = BchConsumer
