@@ -11,7 +11,9 @@ class BchConsumer {
     // Allow URL to be overridden at startup.
     this.restURL = localConfig.restURL
     if (!this.restURL) {
+      // Default value.
       this.restURL = 'https://free-bch.fullstack.cash'
+      localConfig.restURL = this.restURL
     }
 
     // Encapsulate dependencies
