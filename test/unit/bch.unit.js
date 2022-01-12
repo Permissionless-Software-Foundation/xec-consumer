@@ -113,4 +113,53 @@ describe('#BCH', () => {
       }
     })
   })
+
+  describe('#transactions', () => {
+    it('should get transaction history', async () => {
+      // Mock network
+      sandbox.stub(uut.axios, 'post').resolves({ data: { key: 'value' } })
+
+      const addr = 'testaddr'
+
+      const result = await uut.getTransactions(addr)
+
+      assert.equal(result.key, 'value')
+    })
+
+    it('should throw an error if input is not a string', async () => {
+      try {
+        await uut.getTransactions(123)
+
+        assert.fail('Unexpected code path')
+      } catch (err) {
+        assert.equal(
+          err.message,
+          'Input must be a string containing bitcoincash address'
+        )
+      }
+    })
+  })
+
+  describe('#transaction', () => {
+    it('should get transaction data', async () => {
+      // Mock network
+      sandbox.stub(uut.axios, 'post').resolves({ data: { key: 'value' } })
+
+      const txid = 'testaddr'
+
+      const result = await uut.getTransaction(txid)
+
+      assert.equal(result.key, 'value')
+    })
+
+    it('should throw an error if input is not a string', async () => {
+      try {
+        await uut.getTransaction(123)
+
+        assert.fail('Unexpected code path')
+      } catch (err) {
+        assert.equal(err.message, 'Input must be a string containing a TXID')
+      }
+    })
+  })
 })
