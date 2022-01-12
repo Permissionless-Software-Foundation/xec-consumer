@@ -16,7 +16,7 @@ describe('#Message', () => {
     // Restore the sandbox before each test.
     sandbox = sinon.createSandbox()
 
-    uut = new Message({ restUrl: 'fakeurl' })
+    uut = new Message({ restURL: 'fakeurl' })
   })
 
   afterEach(() => sandbox.restore())

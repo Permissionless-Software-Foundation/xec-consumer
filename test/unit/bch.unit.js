@@ -16,7 +16,7 @@ describe('#BCH', () => {
     // Restore the sandbox before each test.
     sandbox = sinon.createSandbox()
 
-    uut = new BCH({ restUrl: 'fakeurl' })
+    uut = new BCH({ restURL: 'fakeurl' })
   })
 
   afterEach(() => sandbox.restore())
