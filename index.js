@@ -9,9 +9,9 @@ const Message = require('./lib/msg')
 class BchConsumer {
   constructor (localConfig = {}) {
     // Allow URL to be overridden at startup.
-    this.restUrl = localConfig.restUrl
-    if (!this.restUrl) {
-      this.restUrl = 'https://free-bch.fullstack.cash'
+    this.restURL = localConfig.restURL
+    if (!this.restURL) {
+      this.restURL = 'https://free-bch.fullstack.cash'
     }
 
     // Encapsulate dependencies
