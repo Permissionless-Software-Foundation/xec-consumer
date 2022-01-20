@@ -7,7 +7,8 @@ const assert = require('chai').assert
 
 // Unit under test
 const BCH = require('../../lib/bch')
-const uut = new BCH({ restURL: 'https://free-bch.fullstack.cash' })
+// const uut = new BCH({ restURL: 'https://free-bch.fullstack.cash' })
+const uut = new BCH({ restURL: 'http://localhost:5005' })
 
 describe('#bch.js', () => {
   describe('#getBalance', () => {
