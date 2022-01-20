@@ -143,7 +143,9 @@ describe('#BCH', () => {
   describe('#transaction', () => {
     it('should get transaction data', async () => {
       // Mock network
-      sandbox.stub(uut.axios, 'post').resolves({ data: { key: 'value' } })
+      sandbox
+        .stub(uut.axios, 'post')
+        .resolves({ data: { txData: { key: 'value' } } })
 
       const txid = 'testaddr'
 
