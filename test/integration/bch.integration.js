@@ -2,12 +2,17 @@
   Integration tests for the bch.js library.
 */
 
+// Configure this constant for your use in the test.
+// const RESTURL = 'https://free-bch.fullstack.cash'
+const RESTURL = 'http://localhost:5005'
+console.log(`Using this REST URL for integration tests: ${RESTURL}`)
+
 // npm libraries
 const assert = require('chai').assert
 
 // Unit under test
 const BCH = require('../../lib/bch')
-const uut = new BCH({ restURL: 'https://free-bch.fullstack.cash' })
+const uut = new BCH({ restURL: RESTURL })
 
 describe('#bch.js', () => {
   describe('#getBalance', () => {
