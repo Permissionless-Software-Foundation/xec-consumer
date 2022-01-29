@@ -29,7 +29,7 @@ Here are some simple examples illustrating how to use this library. These exampl
 
 ```javascript
 const addr = 'bitcoincash:qp3sn6vlwz28ntmf3wmyra7jqttfx7z6zgtkygjhc7'
-const result = await bchConsumer.getBalance(addr)
+const result = await bchConsumer.bch.getBalance(addr)
 console.log('result: ', result)
 ```
 
@@ -37,7 +37,7 @@ console.log('result: ', result)
 
 ```javascript
 const addr = 'bitcoincash:qp3sn6vlwz28ntmf3wmyra7jqttfx7z6zgtkygjhc7'
-const result = await bchConsumer.getUtxos(addr)
+const result = await bchConsumer.bch.getUtxos(addr)
 console.log('result: ', result)
 ```
 
@@ -45,7 +45,7 @@ console.log('result: ', result)
 
 ```javascript
 const hex = '0100000001000000000000abcdef'
-const result = await bchConsumer.sendTx(hex)
+const result = await bchConsumer.bch.sendTx(hex)
 console.log('result: ', result)
 ```
 
@@ -53,7 +53,7 @@ console.log('result: ', result)
 
 ```javascript
 const addr = 'bitcoincash:qp3sn6vlwz28ntmf3wmyra7jqttfx7z6zgtkygjhc7'
-const result = await bchConsumer.getTxHistory(addr)
+const result = await bchConsumer.bch.getTxHistory(addr)
 console.log('result: ', result)
 ```
 
@@ -63,7 +63,15 @@ console.log('result: ', result)
 const txids = [
   '01517ff1587fa5ffe6f5eb91c99cf3f2d22330cd7ee847e928ce90ca95bf781b'
 ]
-const result = await bchConsumer.getTxData(txids)
+const result = await bchConsumer.bch.getTxData(txids)
+console.log('result: ', result)
+```
+
+### Lookup the Public Key for an Address
+
+```javascript
+const addr = 'bitcoincash:qp3sn6vlwz28ntmf3wmyra7jqttfx7z6zgtkygjhc7'
+const result = await bchConsumer.msg.getPubKey(addr)
 console.log('result: ', result)
 ```
 
