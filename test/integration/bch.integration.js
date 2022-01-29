@@ -41,19 +41,6 @@ describe('#bch.js', () => {
     })
   })
 
-  describe('#getTransactions', () => {
-    it('should get transaction history for an address', async () => {
-      const addr = 'bitcoincash:qp3sn6vlwz28ntmf3wmyra7jqttfx7z6zgtkygjhc7'
-
-      const result = await uut.getTransactions(addr)
-      // console.log(`result: ${JSON.stringify(result, null, 2)}`)
-
-      assert.equal(result.success, true)
-      assert.equal(result.transactions[0].address, addr)
-      assert.isArray(result.transactions[0].transactions)
-    })
-  })
-
   describe('#sendTx', () => {
     it('should try to broadcast a hex tx', async () => {
       const hex =
@@ -67,17 +54,35 @@ describe('#bch.js', () => {
     })
   })
 
-  describe('#getTransaction', () => {
-    it('should try to broadcast a hex tx', async () => {
-      const txid =
-        '01517ff1587fa5ffe6f5eb91c99cf3f2d22330cd7ee847e928ce90ca95bf781b'
+  describe('#getTxHistory', () => {
+    it('should get transaction history for an address', async () => {
+      const addr = 'bitcoincash:qpdh9s677ya8tnx7zdhfrn8qfyvy22wj4qa7nwqa5v'
 
-      const result = await uut.getTransaction(txid)
+      const result = await uut.getTxHistory(addr)
       // console.log(`result: ${JSON.stringify(result, null, 2)}`)
 
-      assert.equal(result.txid, txid)
-      assert.property(result, 'vin')
-      assert.property(result, 'vout')
+      assert.equal(result.success, true)
+      assert.equal(result.status, 200)
+      assert.equal(result.address, addr)
+      assert.isArray(result.txs)
+
+      // Assert descending sort order.
+      assert.isAbove(result.txs[0].height, result.txs[1].height)
+    })
+  })
+
+  describe('#getTxData', () => {
+    it('should get TX data for a single TXID', async () => {
+      const txids = [
+        '01517ff1587fa5ffe6f5eb91c99cf3f2d22330cd7ee847e928ce90ca95bf781b'
+      ]
+
+      const result = await uut.getTxData(txids)
+      // console.log(`result: ${JSON.stringify(result, null, 2)}`)
+
+      assert.equal(result[0].txid, txids[0])
+      assert.property(result[0], 'vin')
+      assert.property(result[0], 'vout')
     })
   })
 })
