@@ -1,9 +1,5 @@
 # bch-consumer
 
-An npm JS library for interacting with [ipfs-bch-wallet-consumer](https://github.com/Permissionless-Software-Foundation/ipfs-bch-wallet-consumer).
-
-## About
-
 _bch-consumer_ is a JS library for retrieving eCash or BCH blockchain data from [ipfs-bch-wallet-consumer](https://github.com/Permissionless-Software-Foundation/ipfs-bch-wallet-consumer), which in turn gets its information from [ipfs-bch-wallet-service](https://github.com/Permissionless-Software-Foundation/ipfs-bch-wallet-service). Read the article [Realizing the Web3 Cash Stack](https://psfoundation.cash/blog/realizing-the-web-3-cash-stack) to learn more about this software stack.
 
 ## Installation
