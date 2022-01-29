@@ -114,21 +114,21 @@ describe('#BCH', () => {
     })
   })
 
-  describe('#transactions', () => {
+  describe('#getTxHistory', () => {
     it('should get transaction history', async () => {
       // Mock network
       sandbox.stub(uut.axios, 'post').resolves({ data: { key: 'value' } })
 
       const addr = 'testaddr'
 
-      const result = await uut.getTransactions(addr)
+      const result = await uut.getTxHistory(addr)
 
       assert.equal(result.key, 'value')
     })
 
     it('should throw an error if input is not a string', async () => {
       try {
-        await uut.getTransactions(123)
+        await uut.getTxHistory(123)
 
         assert.fail('Unexpected code path')
       } catch (err) {
@@ -140,27 +140,30 @@ describe('#BCH', () => {
     })
   })
 
-  describe('#transaction', () => {
+  describe('#getTxData', () => {
     it('should get transaction data', async () => {
       // Mock network
       sandbox
         .stub(uut.axios, 'post')
         .resolves({ data: { txData: { key: 'value' } } })
 
-      const txid = 'testaddr'
+      const txids = ['testaddr']
 
-      const result = await uut.getTransaction(txid)
+      const result = await uut.getTxData(txids)
 
       assert.equal(result.key, 'value')
     })
 
     it('should throw an error if input is not a string', async () => {
       try {
-        await uut.getTransaction(123)
+        await uut.getTxData(123)
 
         assert.fail('Unexpected code path')
       } catch (err) {
-        assert.equal(err.message, 'Input must be a string containing a TXID')
+        assert.equal(
+          err.message,
+          'Input must be an array of strings representing TXIDs'
+        )
       }
     })
   })
