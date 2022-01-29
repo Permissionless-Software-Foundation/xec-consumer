@@ -11,10 +11,10 @@ npm install --save bch-consumer
 ## Instantiation
 
 ```javascript
-// Configure this constant for your use in the test.
+// Configure this constant for your infrastructure.
 const RESTURL = 'https://free-bch.fullstack.cash'
 // const RESTURL = 'http://localhost:5005'
-console.log(`Using this REST URL for integration tests: ${RESTURL}`)
+console.log(`Using this REST URL for bch-consumer: ${RESTURL}`)
 
 // Instantiate bch-consumer
 const BchConsumer = require('bch-consumer')
@@ -44,7 +44,7 @@ console.log('result: ', result)
 ### Send a Transaction
 
 ```javascript
-const hex = '010000000100000000000000000000000'
+const hex = '0100000001000000000000abcdef'
 const result = await bchConsumer.sendTx(hex)
 console.log('result: ', result)
 ```
