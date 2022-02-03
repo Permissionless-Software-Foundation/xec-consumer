@@ -85,4 +85,13 @@ describe('#bch.js', () => {
       assert.property(result[0], 'vout')
     })
   })
+
+  describe('#getUsd', () => {
+    it('should get the price of BCH in USD', async () => {
+      const result = await uut.getUsd()
+      // console.log(`result: ${JSON.stringify(result, null, 2)}`)
+
+      assert.isAbove(result, 0)
+    })
+  })
 })
