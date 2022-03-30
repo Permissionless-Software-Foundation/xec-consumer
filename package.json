@@ -31,8 +31,8 @@
   },
   "repository": "Permissionless-Software-Foundation/bch-consumer",
   "dependencies": {
-    "@psf/bch-js": "5.3.1",
-    "apidoc": "0.25.0",
+    "@psf/bch-js": "6.2.4",
+    "apidoc": "0.51.0",
     "axios": "0.25.0"
   },
   "devDependencies": {
@@ -46,9 +46,9 @@
     "eslint-plugin-standard": "4.0.0",
     "husky": "4.3.8",
     "lodash.clonedeep": "4.5.0",
-    "mocha": "8.4.0",
+    "mocha": "9.2.2",
     "nyc": "15.1.0",
-    "semantic-release": "17.4.2",
+    "semantic-release": "19.0.2",
     "sinon": "9.2.2",
     "standard": "16.0.4"
   },
