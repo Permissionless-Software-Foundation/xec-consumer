@@ -170,4 +170,40 @@ describe('#bch.js', () => {
       assert.equal(result.isValid, true)
     })
   })
+
+  describe('#getTokenData', () => {
+    it('should get PS002 data from a valid token', async () => {
+
+      const tokenId = 'c85042ab08a2099f27de880a30f9a42874202751d834c42717a20801a00aab0d'
+
+      const result = await uut.getTokenData(tokenId)
+      // console.log(`result: ${JSON.stringify(result, null, 2)}`)
+
+      assert.equal(result.success, true)
+      assert.equal(result.status, 200)
+      assert.equal(result.endpoint, 'getTokenData')
+
+      assert.property(result.tokenData, 'genesisData')
+      assert.property(result.tokenData, 'immutableData')
+      assert.property(result.tokenData, 'mutableData')
+    })
+
+    it('should get data for token not following PS002', async () => {
+
+      const tokenId = '2624df798d76986231c7acb0f6923f537223da44ba6e25171186ab4056a58b64'
+
+      const result = await uut.getTokenData(tokenId)
+      // console.log(`result: ${JSON.stringify(result, null, 2)}`)
+
+      assert.equal(result.success, true)
+      assert.equal(result.status, 200)
+      assert.equal(result.endpoint, 'getTokenData')
+
+      assert.property(result.tokenData, 'genesisData')
+      assert.property(result.tokenData, 'immutableData')
+      assert.property(result.tokenData, 'mutableData')
+
+      assert.deepEqual(result.tokenData.mutableData, '')
+    })
+  })
 })
