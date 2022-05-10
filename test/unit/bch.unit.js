@@ -219,7 +219,7 @@ describe('#BCH', () => {
       const tokenId = 'c85042ab08a2099f27de880a30f9a42874202751d834c42717a20801a00aab0d'
 
       // Mock dependency
-      sandbox.stub(uut.axios, 'post').resolves({ data: {a: 'b'} })
+      sandbox.stub(uut.axios, 'post').resolves({ data: { a: 'b' } })
 
       const result = await uut.getTokenData(tokenId)
 
