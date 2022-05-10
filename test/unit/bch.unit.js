@@ -167,4 +167,70 @@ describe('#BCH', () => {
       }
     })
   })
+
+  describe('#getUsd', () => {
+    it('should call the REST API', async () => {
+      // Mock dependency
+      sandbox.stub(uut.axios, 'get').resolves({ data: { usd: 300.00 } })
+
+      const result = await uut.getUsd()
+
+      assert.equal(result, 300.00)
+    })
+
+    // it('should throw an error if axios throws an error', async () => {
+    //   // Force an error
+    //   sandbox.stub(uut.axios, 'post').rejects(new Error('test error'))
+    //
+    //   try {
+    //     const utxo = {
+    //       txid: 'fake'
+    //     }
+    //
+    //     await uut.utxoIsValid(utxo)
+    //
+    //     assert.fail('Unexpected code path')
+    //   } catch (err) {
+    //     assert.equal(
+    //       err.message,
+    //       'test error'
+    //     )
+    //   }
+    // })
+  })
+
+  describe('#utxoIsValid', () => {
+    it('should pass data to REST API', async () => {
+      const utxo = {
+        txid: 'fake'
+      }
+
+      // Mock dependency
+      sandbox.stub(uut.axios, 'post').resolves({ data: true })
+
+      const result = await uut.utxoIsValid(utxo)
+
+      assert.equal(result, true)
+    })
+
+    it('should throw an error if axios throws an error', async () => {
+      // Force an error
+      sandbox.stub(uut.axios, 'post').rejects(new Error('test error'))
+
+      try {
+        const utxo = {
+          txid: 'fake'
+        }
+
+        await uut.utxoIsValid(utxo)
+
+        assert.fail('Unexpected code path')
+      } catch (err) {
+        assert.equal(
+          err.message,
+          'test error'
+        )
+      }
+    })
+  })
 })

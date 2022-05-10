@@ -3,8 +3,8 @@
 */
 
 // Configure this constant for your use in the test.
-const RESTURL = 'https://free-bch.fullstack.cash'
-// const RESTURL = 'http://localhost:5005'
+// const RESTURL = 'https://free-bch.fullstack.cash'
+const RESTURL = 'http://localhost:5005'
 console.log(`Using this REST URL for integration tests: ${RESTURL}`)
 
 // npm libraries
@@ -92,6 +92,82 @@ describe('#bch.js', () => {
       // console.log(`result: ${JSON.stringify(result, null, 2)}`)
 
       assert.isAbove(result, 0)
+    })
+  })
+
+  describe('#utxoIsValid', () => {
+    it('should return true for valid UTXO with fullnode properties', async () => {
+      const utxo = {
+        txid: 'b94e1ff82eb5781f98296f0af2488ff06202f12ee92b0175963b8dba688d1b40',
+        vout: 0
+      }
+
+      const result = await uut.utxoIsValid(utxo)
+      // console.log(`result: ${JSON.stringify(result, null, 2)}`)
+
+      assert.equal(result.success, true)
+      assert.equal(result.status, 200)
+      assert.equal(result.endpoint, 'utxoIsValid')
+      assert.equal(result.isValid, true)
+    })
+
+    it('should return true for valid UTXO with fulcrum properties', async () => {
+      const utxo = {
+        tx_hash: 'b94e1ff82eb5781f98296f0af2488ff06202f12ee92b0175963b8dba688d1b40',
+        tx_pos: 0
+      }
+
+      const result = await uut.utxoIsValid(utxo)
+      // console.log(`result: ${JSON.stringify(result, null, 2)}`)
+
+      assert.equal(result.success, true)
+      assert.equal(result.status, 200)
+      assert.equal(result.endpoint, 'utxoIsValid')
+      assert.equal(result.isValid, true)
+    })
+
+    it('should return false for valid UTXO with fullnode properties', async () => {
+      const utxo = {
+        txid: '17754221b29f189532d4fc2ae89fb467ad2dede30fdec4854eb2129b3ba90d7a',
+        vout: 0
+      }
+
+      const result = await uut.utxoIsValid(utxo)
+      // console.log(`result: ${JSON.stringify(result, null, 2)}`)
+
+      assert.equal(result.success, true)
+      assert.equal(result.status, 200)
+      assert.equal(result.endpoint, 'utxoIsValid')
+      assert.equal(result.isValid, false)
+    })
+
+    it('should return false for valid UTXO with fulcrum properties', async () => {
+      const utxo = {
+        tx_hash: '17754221b29f189532d4fc2ae89fb467ad2dede30fdec4854eb2129b3ba90d7a',
+        tx_pos: 0
+      }
+
+      const result = await uut.utxoIsValid(utxo)
+      // console.log(`result: ${JSON.stringify(result, null, 2)}`)
+
+      assert.equal(result.success, true)
+      assert.equal(result.status, 200)
+      assert.equal(result.endpoint, 'utxoIsValid')
+      assert.equal(result.isValid, false)
+    })
+
+    it('should work with getUtxos()', async () => {
+      const addr = 'bitcoincash:qr4yscpw9jgq8ltajfeknpj32kamkf9knujffcdhyq'
+
+      const utxos = await uut.getUtxos(addr)
+      // console.log(`utxos: ${JSON.stringify(utxos, null, 2)}`)
+
+      const result = await uut.utxoIsValid(utxos[0].bchUtxos[0])
+
+      assert.equal(result.success, true)
+      assert.equal(result.status, 200)
+      assert.equal(result.endpoint, 'utxoIsValid')
+      assert.equal(result.isValid, true)
     })
   })
 })
