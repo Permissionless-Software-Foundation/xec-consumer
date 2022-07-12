@@ -3,8 +3,9 @@
 */
 
 // Configure this constant for your use in the test.
-const RESTURL = 'https://free-bch.fullstack.cash'
-// const RESTURL = 'http://localhost:5005'
+// const RESTURL = 'https://free-bch.fullstack.cash'
+// const RESTURL = 'https://bc01-ca-bch-consumer.fullstackcash.nl'
+const RESTURL = 'http://localhost:5005'
 console.log(`Using this REST URL for integration tests: ${RESTURL}`)
 
 // npm libraries
@@ -202,6 +203,15 @@ describe('#bch.js', () => {
       assert.property(result.tokenData, 'mutableData')
 
       assert.deepEqual(result.tokenData.mutableData, '')
+    })
+
+    it('should get token data with transaction history', async () => {
+      const tokenId = '43eddfb11c9941edffb8c8815574bb0a43969a7b1de39ad14cd043eaa24fd38d'
+
+      const result = await uut.getTokenData(tokenId, true)
+      // console.log(`result: ${JSON.stringify(result, null, 2)}`)
+
+      assert.isArray(result.tokenData.genesisData.txs)
     })
   })
 })
