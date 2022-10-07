@@ -31,7 +31,7 @@
   },
   "repository": "Permissionless-Software-Foundation/bch-consumer",
   "dependencies": {
-    "@psf/bch-js": "6.4.5",
+    "@psf/bch-js": "6.5.1",
     "apidoc": "0.51.0",
     "axios": "0.25.0"
   },
