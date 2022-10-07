@@ -22,7 +22,7 @@ describe('#bch.js', () => {
 
       const result = await uut.getBalance(addr)
       // console.log(`result: ${JSON.stringify(result, null, 2)}`)
-  
+
       assert.equal(result.success, true)
 
       assert.property(result, 'balances')
