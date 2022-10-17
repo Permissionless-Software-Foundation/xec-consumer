@@ -1,5 +1,5 @@
 {
-  "name": "bch-consumer",
+  "name": "xec-consumer",
   "version": "1.0.0",
   "description": "A npm JS library for interacting with ipfs-bch-wallet-consumer REST API",
   "main": "index.js",
@@ -26,10 +26,10 @@
   "author": "Chris Troutner <chris.troutner@gmail.com>",
   "license": "MIT",
   "apidoc": {
-    "title": "bch-consumer",
-    "url": "bchConsumer."
+    "title": "xec-consumer",
+    "url": "xec-consumer."
   },
-  "repository": "Permissionless-Software-Foundation/bch-consumer",
+  "repository": "Permissionless-Software-Foundation/xec-consumer",
   "dependencies": {
     "@psf/bch-js": "6.5.1",
     "apidoc": "0.51.0",
